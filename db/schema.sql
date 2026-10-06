@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS instrument_records (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  person_name VARCHAR(120) NOT NULL,
+  instrument_name VARCHAR(160) NOT NULL,
+  part_number VARCHAR(120) NOT NULL,
+  serial_number VARCHAR(120) NOT NULL,
+  photo_url TEXT NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
