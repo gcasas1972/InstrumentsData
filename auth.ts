@@ -8,12 +8,30 @@ const authorizedEmails = new Set(
     .filter(Boolean),
 );
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
+export function isAuthorizedEmail(email?: string | null): boolean {
+  if (!email) {
+    return false;
+  }
+
+  return authorizedEmails.has(email.trim().toLowerCase());
+}
+
+const { handlers, auth: nextAuthAuth, signIn, signOut } = NextAuth({
   providers: [Google],
   callbacks: {
     async signIn({ user }) {
-      const email = user.email?.trim().toLowerCase();
-      return Boolean(email && authorizedEmails.has(email));
+      return isAuthorizedEmail(user.email);
     },
   },
 });
+
+export async function auth() {
+  const session = await nextAuthAuth();
+  if (!session?.user?.email || !isAuthorizedEmail(session.user.email)) {
+    return null;
+  }
+
+  return session;
+}
+
+export { handlers, signIn, signOut };
