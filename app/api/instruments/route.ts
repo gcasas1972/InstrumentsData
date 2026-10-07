@@ -1,5 +1,4 @@
 import { del, put } from "@vercel/blob";
-import { auth } from "@/auth";
 import { getDb } from "@/lib/db";
 
 export const runtime = "nodejs";
@@ -12,11 +11,6 @@ const allowedImageTypes = new Map([
 const maxPhotoSize = 4 * 1024 * 1024;
 
 export async function POST(request: Request) {
-  const session = await auth();
-  if (!session?.user?.email) {
-    return Response.json({ error: "Debes iniciar sesión para guardar registros." }, { status: 401 });
-  }
-
   let formData: FormData;
   try {
     formData = await request.formData();
