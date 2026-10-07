@@ -61,6 +61,7 @@ export async function POST(request: Request) {
   }
 
   let photoUrl: string | undefined;
+  let failedStage: "subida de foto" | "guardado en la base de datos" = "subida de foto";
   try {
     const blob = await put(`instrument-photos/${crypto.randomUUID()}.${extension}`, photo, {
       access: "public",
@@ -68,6 +69,7 @@ export async function POST(request: Request) {
     });
     photoUrl = blob.url;
 
+    failedStage = "guardado en la base de datos";
     const db = getDb();
     await db`
       INSERT INTO instrument_records
@@ -86,9 +88,14 @@ export async function POST(request: Request) {
       }
     }
 
-    console.error("No se pudo guardar el registro del instrumento.", error);
+    console.error(`Falló el ${failedStage} del registro del instrumento.`, error);
     return Response.json(
-      { error: "No se pudo guardar el registro. Inténtalo de nuevo." },
+      {
+        error:
+          failedStage === "subida de foto"
+            ? "No se pudo subir la foto. Revisa la configuración de Vercel Blob."
+            : "No se pudo guardar en la base de datos. Revisa DATABASE_URL y que db/schema.sql esté aplicado.",
+      },
       { status: 500 },
     );
   }
