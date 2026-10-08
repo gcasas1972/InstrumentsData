@@ -14,8 +14,8 @@ export default function Home() {
 
         <InstrumentForm />
         <p className="privacy-note">
-          Los datos se guardan en Neon. El archivo de imagen se guarda en Vercel Blob; en la base
-          solo se conserva su URL.
+          Los datos se guardan en Neon. La foto se guarda de forma privada en Vercel Blob; en la
+          base solo se conserva su URL.
         </p>
       </section>
     </main>
