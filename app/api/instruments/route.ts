@@ -1,6 +1,5 @@
 import { del, put } from "@vercel/blob";
 import { getDb } from "@/lib/db";
-
 export const runtime = "nodejs";
 
 const allowedImageTypes = new Map([
@@ -64,7 +63,7 @@ export async function POST(request: Request) {
   let failedStage: "subida de foto" | "guardado en la base de datos" = "subida de foto";
   try {
     const blob = await put(`instrument-photos/${crypto.randomUUID()}.${extension}`, photo, {
-      access: "private",
+      access: "public",
       contentType: photo.type,
     });
     photoUrl = blob.url;
