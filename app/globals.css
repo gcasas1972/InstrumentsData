@@ -159,6 +159,113 @@ h1 {
   line-height: 1.55;
 }
 
+.admin-link,
+.back-link,
+.record-heading a {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.admin-card {
+  width: min(100%, 900px);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.admin-header {
+  align-items: center;
+}
+
+.secondary-button,
+.danger-button {
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  color: var(--ink);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.admin-record-list {
+  display: grid;
+  gap: 18px;
+}
+
+.admin-record {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.admin-record label {
+  display: grid;
+  gap: 8px;
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+
+.admin-record input:not([type="file"]) {
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  color: var(--ink);
+}
+
+.admin-record input[type="file"] {
+  width: 100%;
+}
+
+.record-heading,
+.record-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.record-heading {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.record-actions {
+  justify-content: flex-start;
+}
+
+.danger-button {
+  border-color: #e6c5c1;
+  color: #ad3025;
+}
+
+.danger-button:hover:not(:disabled) {
+  background: #fff4f2;
+}
+
+.danger-button:disabled,
+.secondary-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.empty-state {
+  padding: 24px;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  text-align: center;
+}
+
 @media (max-width: 600px) {
   .card {
     padding: 26px 20px;
@@ -166,6 +273,10 @@ h1 {
 
   .page-header {
     flex-direction: column;
+  }
+
+  .admin-header {
+    align-items: flex-start;
   }
 
   .field-row {

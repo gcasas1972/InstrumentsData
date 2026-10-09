@@ -10,6 +10,7 @@ export default function Home() {
             <h1>Registrar instrumento</h1>
             <p className="intro">Completa los datos y adjunta una foto.</p>
           </div>
+          <a className="admin-link" href="/admin">Administrar registros</a>
         </header>
 
         <InstrumentForm />
