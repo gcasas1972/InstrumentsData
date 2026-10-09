@@ -20,6 +20,9 @@ foto, no su contenido; las fotos requieren autenticación para acceder.
 
    Consulta [`.env.example`](./.env.example) para ver los nombres de las variables. No
    compartas ni subas los valores secretos al repositorio.
+   En Vercel, agrega `BLOB_READ_WRITE_TOKEN` en los ajustes del proyecto usando un token de
+   lectura/escritura de esa tienda privada y vuelve a desplegar para que la función reciba la
+   variable.
 4. Instala dependencias y ejecuta la aplicación:
 
    ```bash

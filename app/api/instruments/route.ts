@@ -63,7 +63,7 @@ export async function POST(request: Request) {
   let failedStage: "subida de foto" | "guardado en la base de datos" = "subida de foto";
   try {
     const blob = await put(`instrument-photos/${crypto.randomUUID()}.${extension}`, photo, {
-      access: "public",
+      access: "private",
       contentType: photo.type,
     });
     photoUrl = blob.url;
