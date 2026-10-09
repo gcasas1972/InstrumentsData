@@ -2,8 +2,7 @@ import { del, put } from "@vercel/blob";
 import { getDb } from "@/lib/db";
 export const runtime = "nodejs";
 
-const allowedImageTypes = new Map([
-  ["image/jpeg", "jpg"],
+const allowedImageTypes = new Map([["image/jpeg", "jpg"],
   ["image/png", "png"],
   ["image/webp", "webp"],
 ]);
